@@ -1,0 +1,19 @@
+.card-img-top.card-img-uniform {
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  background: #f9f9f9;
+  /* Opcional: para que las imágenes que no llenen el espacio tengan fondo */
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card-title {
+  margin-bottom: 0.75rem;
+}
+ul.flex-grow-1 {
+  flex-grow: 1;
+}
