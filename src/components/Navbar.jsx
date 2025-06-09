@@ -1,29 +1,28 @@
 import React from 'react';
 
-function Navbar() {
+const Navbar = () => {
+  const total = 25000;
+  const token = false; // Cambia esto a `true` para simular un usuario autenticado
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-      <span className="navbar-brand mb-0 h1">Pizzería Mamma Mia!</span>
-      {/* Botones centrados */}
-      <div className="mx-auto d-flex">
-        <button className="btn btn-secondary mx-1">
-          <i className="bi bi-house-door-fill"></i> Home
-        </button>
-        <button className="btn btn-secondary mx-1">
-          <i className="bi bi-box-arrow-in-right"></i> Login
-        </button>
-        <button className="btn btn-secondary mx-1">
-          <i className="bi bi-person-plus-fill"></i> Register
-        </button>
-      </div>
-      {/* Total a la derecha */}
-      <div className="ms-auto">
-        <span className="badge bg-info text-dark fs-6">
-          💵 Total: $25.000
-        </span>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <button className="btn btn-primary">🍕 Home</button>
+        {token ? (
+          <>
+            <button className="btn btn-primary">🔓 Profile</button>
+            <button className="btn btn-primary">🔒 Logout</button>
+          </>
+        ) : (
+          <>
+            <button className="btn btn-primary">🔐 Login</button>
+            <button className="btn btn-primary">🔐 Register</button>
+          </>
+        )}
+        <button className="btn btn-primary">🛒 Total: ${total.toLocaleString()}</button>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

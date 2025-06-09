@@ -1,16 +1,11 @@
-import React from "react";
-import "./Footer.css";
+import React from 'react';
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer className="footer-mamma-mia">
-      <div className="container text-center py-2">
-        <small>
-          © 2021 - Pizzería Mamma Mia! - Todos los derechos reservados
-        </small>
-      </div>
+    <footer className="bg-light text-center p-3">
+      <p>© 2021 - Pizzería Mamma Mia! - Todos los derechos reservados</p>
     </footer>
   );
-}
+};
 
 export default Footer;

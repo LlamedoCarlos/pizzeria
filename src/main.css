@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.cabecera {
+    background: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url('./assets/img/Header.jpg');
+    background-size: cover;
+    border: solid 5px #FFF2CC;
+    height: 35vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.navegacion {
+    font-size: 1.4vw;
+    text-align: center;
+}
+
+.navegacion .enlace-nav {
+    padding: .3vh;
+}
+
+.navegacion .total-carrito {
+    font-size: 1.4vw;
+}
+
+.principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    flex-wrap: wrap;
+    margin: 6% auto;
+    border: solid 5px #FFF2CC;
+}
+
+.ancho-tarjetas {
+    display: flex;
+    width: 30%;
+}
+
+.tarjeta-pizza {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 2.5vw auto;
+    position: relative;
+}
+
+.tarjeta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid #dbdbdb;
+    padding: 1em;
+    min-height: 43vh;
+}
+
+.tarjeta img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+.tarjeta h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.tarjeta p {
+    font-size: 1em;
+    margin: 0.5em 0;
+}
+
+.tarjeta .precio-pizza {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0.5em 0;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.botones button {
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.botones .bg-light {
+    background-color: #f8f9fa;
+    border: 1px solid #343a40;
+    color: #343a40;
+}
+
+.botones .bg-light:hover {
+    background-color: #e2e6ea;
+}
+
+.botones .bg-dark {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.botones .bg-dark:hover {
+    background-color: #495057;
+}
+
+.lista-ingredientes {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+.lista-ingredientes li {
+    background-color: #f0f0f0;
+    border-radius: 16px;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.lista-ingredientes li::before {
+    content: '🍴';
+    margin-right: 0.5em;
+    color: #646cff;
+}
+
+.carta-pizza {
+    position: relative;
+    overflow: hidden;
+}
+
+.contenedor-descripcion {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+}
+
+.contenedor-descripcion.expandido {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.descripcion-pizza {
+    padding: .3vh;
+}
+
+.ver-mas {
+    color: #dbdbdb;
+    align-items: center;
+}
+
+.item-lista {
+    display: flex;
+    margin: 1vw;
+    border: solid 1px #dbdbdb;
+    padding: 1vw;
+    cursor: pointer;
+    align-items: center;
+}
+
+.item-lista:hover {
+    background-color: #dbdbdb;
+}
+
+.item-lista img {
+    width: 20vh;
+    height: auto;
+}
+
+.carrito {
+    display: flex;
+    flex-direction: column;
+    margin: 3vw auto;
+    align-items: center;
+}
+
+.carrito h1 {
+    margin: 2vw 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.carrito .item-lista {
+    width: 70vw;
+    justify-content: space-between;
+    font-size: 1.5em;
+}
+
+.carrito button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1vw;
+    width: 6vw;
+    height: 6vw;
+    color: #dbdbdb;
+    border: none;
+    background-color: #212121;
+    cursor: pointer;
+}
+
+.carrito button p {
+    margin: 0 0 .9vw 0;
+    font-size: 3vw;
+}
+
+.pagar {
+    background-color: #212121;
+    color: #fff;
+    border: none;
+    margin: 2vw 0;
+    cursor: pointer;
+    font-size: 1.5em;
+    width: 11vw;
+    height: 5vw;
+}
+
+.lista-general {
+    list-style-type: none;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.pie {
+    border: solid 5px #FFF2CC;
+    margin: auto 0;
+    padding: 1em;
+    bottom: 0;
+    width: 100%;
+}
+
+.pie p {
+    margin: auto;
+    margin: 10px;
+}
+
+.registro, .acceso {
+    height: 90vh;
+    padding-top: 5vh;
+}
+
+.registro form, .acceso form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    font-size: 1.5em;
+}
+
+.registro label, .acceso label {
+    margin: 1vw;
+}
+
+.registro input, .acceso input {
+    padding: .5vw;
+    margin: 1vw;
+}
+
+.registro button, .acceso button {
+    padding: .5vw;
+    margin: 1vw;
+    border: none;
+    background-color: #212121;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.registro button:hover, .acceso button:hover {
+    background-color: #ce8525;
+}
+
+.registro p, .acceso p {
+    display: flex;
+    font-size: 1.5em;
+    justify-content: center;
+}

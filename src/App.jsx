@@ -1,18 +1,22 @@
-import Banner from './components/Banner';
-import Footer from './components/Footer';
+import React from 'react';
 import Navbar from './components/Navbar';
-import PizzaList from './components/PizzaList';
+import Footer from './components/Footer';
+import Register from './components/Register';
+import Login from './components/Login';
+import './index.css'; 
+import './main.css';
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <div className="container">
       <Navbar />
-      <Banner />
-      <PizzaList />
+      <div className="form-container">
+        <Register />
+        {/* <Login /> */}
+      </div>
       <Footer />
-      {/* Aquí irán otros componentes, como Home y Footer */}
     </div>
   );
-}
+};
 
 export default App;
