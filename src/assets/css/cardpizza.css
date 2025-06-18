@@ -1,0 +1,16 @@
+.card-pizza {
+  border: 5px solid #1a1d1f;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 330px;
+  max-width: 320px;
+  transition: box-shadow 0.2s;
+  background: #fff;
+}
+.card-pizza:hover {
+  box-shadow: 0 0 12px #c8e6ff77;
+}
+.card-pizza .btn {
+  min-width: 90px;
+    max-width: 150px;
+}

@@ -1,0 +1,39 @@
+/* Cambia el color del texto del navbar */
+.navbar,
+.navbar .navbar-brand,
+.navbar .btn {
+  color: #1386c6 !important;
+}
+
+/* Cambia el borde de los botones a celeste oscuro */
+.navbar .btn {
+  border-color: #1386c6 !important;
+  color: #1386c6 !important;
+  background-color: transparent !important;
+}
+
+/* Al pasar el mouse, el fondo de los botones puede aclararse un poco */
+.navbar .btn:hover,
+.navbar .btn:focus {
+  background-color: #1386c6 !important;
+  color: #fff !important;
+  border-color: #1386c6 !important;
+}
+
+/* Botón del carrito: color de fondo especial y letras blancas */
+.navbar .btn.cart-total {
+  background-color: #1a1d1f !important;
+  color: #fff !important;
+  border-color: #1386c6 !important;
+}
+
+.navbar .btn.cart-total:hover,
+.navbar .btn.cart-total:focus {
+  background-color: #0d628f !important;
+  border-color: #0d628f !important;
+  color: #fff !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
