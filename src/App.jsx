@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Home } from './components/Home'
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { Register } from './components/Register';
+import { Login } from './components/Login';
 
 
 
@@ -15,8 +17,10 @@ import { Footer } from './components/Footer';
     <>
       <div className="d-flex flex-column min-vh-100">
       <Navbar />
+      {/* <Register /> */}
+      < Login />
       <main className="flex-grow-1">
-        <Home />
+        {/* <Home /> */}
       </main>
       <Footer />
     </div>

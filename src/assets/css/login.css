@@ -1,0 +1,38 @@
+.form-login-container {
+  max-width: 1000px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.form-login-container input {
+  margin-bottom: 16px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+.form-login-container button {
+  width: 100%;
+  padding: 10px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.form-login-container .mensaje {
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.form-login-container .mensaje.exito {
+  background: #e6ffe6;
+  color: #2e7d32;
+}
+.form-login-container .mensaje.error {
+  background: #ffe6e6;
+  color: #c62828;
+}
