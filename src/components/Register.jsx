@@ -7,11 +7,14 @@ export const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
 
-  // Expresión regular para validar la contraseña
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$/;
+  // Expresiones regulares corregidas:
+  const mayuscula = /[A-Z]/;
+  const minuscula = /[a-z]/;
+  const numero = /\d/;
+  const especial = /[^A-Za-z0-9]/;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     // Validación: campos vacíos
     if (!email || !password || !confirmPassword) {
@@ -23,9 +26,21 @@ export const Register = () => {
       setMensaje('La contraseña debe tener al menos 6 caracteres');
       return;
     }
-    // Validación: al menos una mayúscula, una minúscula, un número y un carácter especial
-    if (!passwordRegex.test(password)) {
-      setMensaje('La contraseña debe tener al menos una mayúscula, una minúscula, un número y un caracter especial');
+    // Validaciones una por una, con mensaje específico
+    if (!mayuscula.test(password)) {
+      setMensaje('La contraseña debe tener al menos una mayúscula');
+      return;
+    }
+    if (!minuscula.test(password)) {
+      setMensaje('La contraseña debe tener al menos una minúscula');
+      return;
+    }
+    if (!numero.test(password)) {
+      setMensaje('La contraseña debe tener al menos un número');
+      return;
+    }
+    if (!especial.test(password)) {
+      setMensaje('La contraseña debe tener al menos un carácter especial');
       return;
     }
     // Validación: las contraseñas deben coincidir
@@ -36,7 +51,7 @@ export const Register = () => {
 
     // Si todo está bien
     setMensaje('¡Registro exitoso!');
-    // Aquí podrías limpiar los campos si quieres:
+    // Puedes limpiar los campos si quieres:
     // setEmail('');
     // setPassword('');
     // setConfirmPassword('');

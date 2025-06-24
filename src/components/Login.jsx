@@ -6,6 +6,12 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
 
+   // Expresiones regulares corregidas:
+  const mayuscula = /[A-Z]/;
+  const minuscula = /[a-z]/;
+  const numero = /\d/;
+  const especial = /[^A-Za-z0-9]/;
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -17,6 +23,23 @@ export const Login = () => {
     // Validación: mínimo 6 caracteres
     if (password.length < 6) {
       setMensaje('La contraseña debe tener al menos 6 caracteres');
+      return;
+    }
+    // Validaciones una por una, con mensaje específico
+    if (!mayuscula.test(password)) {
+      setMensaje('La contraseña debe tener al menos una mayúscula');
+      return;
+    }
+    if (!minuscula.test(password)) {
+      setMensaje('La contraseña debe tener al menos una minúscula');
+      return;
+    }
+    if (!numero.test(password)) {
+      setMensaje('La contraseña debe tener al menos un número');
+      return;
+    }
+    if (!especial.test(password)) {
+      setMensaje('La contraseña debe tener al menos un carácter especial');
       return;
     }
 
