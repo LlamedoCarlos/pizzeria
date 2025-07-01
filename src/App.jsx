@@ -18,9 +18,9 @@ import { Login } from './components/Login';
       <div className="d-flex flex-column min-vh-100">
       <Navbar />
       {/* <Register /> */}
-      < Login />
+      {/* < Login /> */}
       <main className="flex-grow-1">
-        {/* <Home /> */}
+        <Home />
       </main>
       <Footer />
     </div>

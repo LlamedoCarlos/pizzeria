@@ -1,0 +1,19 @@
+.card.card-pizza {
+  border: 5px solid #1a1d1f !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  min-width: 330px !important;
+  max-width: 320px !important;
+  background: #fff !important;
+  transition: box-shadow 0.2s !important;
+}
+.card.card-pizza:hover {
+  box-shadow: 0 0 12px #c8e6ff77 !important;
+}
+.card.card-pizza .btn {
+  min-width: 90px !important;
+  max-width: 150px !important;
+}
+
+/* Elimina esto si ya ves los estilos personalizados */
+/* body { background: yellow !important; } */

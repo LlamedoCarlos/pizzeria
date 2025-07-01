@@ -10,13 +10,15 @@ export const CardPizza = ({ name, price, ingredients, img }) => {
         style={{ height: "180px", objectFit: "cover" }}
       />
       <div className="card-body d-flex flex-column">
-        <h5 className="card-title mb-2">Pizza {name}</h5>
+        <h5 className="card-title mb-2">{name}</h5>
         <p className="mb-1 text-muted" style={{ fontSize: "0.95rem" }}>
           Ingredientes:
         </p>
-        <p className="mb-2" style={{ color: "#1a1d1f", fontSize: "0.95rem" }}>
-          <span role="img" aria-label="queso">🧀</span> {ingredients.join(", ")}
-        </p>
+        <ul>
+          {ingredients.map((ing, i) => (
+            <li key={i}>{ing}</li>
+          ))}
+        </ul>
         <p className="fw-bold fs-5 mb-3" style={{ marginTop: "auto" }}>
           Precio: ${price.toLocaleString()}
         </p>
