@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
+import {Cart } from "./components/Cart";
 
 
 
@@ -21,6 +22,7 @@ import { Login } from './components/Login';
       {/* < Login /> */}
       <main className="flex-grow-1">
         <Home />
+         <Cart /> 
       </main>
       <Footer />
     </div>
