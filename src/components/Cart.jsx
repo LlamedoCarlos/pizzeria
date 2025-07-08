@@ -52,7 +52,7 @@ export const Cart = () => {
         ))}
       </ul>
       <h3 className="cart-total">Total: ${total.toLocaleString()}</h3>
-      <button className="cart-pay-btn">Pagar</button>
+      <button className="btn-pay">Pagar</button>
     </div>
   );
 };
