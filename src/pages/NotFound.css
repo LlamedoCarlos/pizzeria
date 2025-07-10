@@ -1,0 +1,53 @@
+.notfound-container {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff914d 0%, #e63946 100%);
+  border-radius: 16px;
+  margin: 3rem auto;
+  max-width: 480px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.notfound-container h1 {
+  font-size: 6rem;
+  margin-bottom: 0;
+}
+
+.emoji {
+  font-size: 2.5rem;
+  margin: 1.5rem 0;
+}
+
+.notfound-container h2 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.notfound-container p {
+  margin-bottom: 2rem;
+}
+
+.home-link {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  background: #fff;
+  color: #e63946;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.home-link:hover {
+  background: #e63946;
+  color: #fff;
+}
+
+.notfound-footer {
+  margin-top: 2.5rem;
+  font-size: 1.2rem;
+  opacity: 0.85;
+}

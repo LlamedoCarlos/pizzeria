@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Register.css';
+import '../components/Register.css'; // Asegúrate de que la ruta sea correcta
 
 export const Register = () => {
   const [email, setEmail] = useState('');
