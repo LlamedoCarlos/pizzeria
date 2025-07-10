@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import '../assets/css/navbar.css';
+import { useCart } from "../context/CardContext.jsx";
 
 export const Navbar = () => {
-  const total = 25000;
-  const token = false; // Cambia a true para simular sesión iniciada
+  const { total } = useCart(); 
+  const token = false; 
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
@@ -23,7 +24,6 @@ export const Navbar = () => {
             </>
           )}
         </div>
-        {/* Spacer para empujar el total a la derecha */}
         <div className="ms-auto">
           <Link to="/cart" className="btn cart-total">
             🛒 Total: ${total.toLocaleString()}

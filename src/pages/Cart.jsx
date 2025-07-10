@@ -1,32 +1,13 @@
-import React, { useState } from "react";
-import { pizzaCart } from "../components/pizzas";
-import "../assets/css/Cart.css"; 
+import React from "react";
+import { useCart } from "../context/CardContext.jsx";
+import "../assets/css/Cart.css";
 
 export const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
+  const { cart, addToCart, removeFromCart, deleteFromCart, total } = useCart();
 
-  const aumentar = (id) => {
-    setCart(
-      cart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const disminuir = (id) => {
-    setCart(
-      cart
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
-  };
-
-  const total = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  if (cart.length === 0) {
+    return <p className="cart-title">El carrito está vacío.</p>;
+  }
 
   return (
     <div className="cart-container">
@@ -34,19 +15,22 @@ export const Cart = () => {
       <ul className="cart-list">
         {cart.map((pizza) => (
           <li key={pizza.id} className="cart-item">
-            <img
-              src={pizza.img}
-              alt={pizza.name}
-              className="cart-img"
-            />
+            <img src={pizza.img} alt={pizza.name} className="cart-img" />
             <span className="cart-name">{pizza.name}</span>
             <span className="cart-price">${pizza.price.toLocaleString()}</span>
-            <button className="cart-btn" onClick={() => disminuir(pizza.id)}>
+            <button className="cart-btn" onClick={() => removeFromCart(pizza.id)}>
               -
             </button>
             <span className="cart-quantity">{pizza.quantity}</span>
-            <button className="cart-btn" onClick={() => aumentar(pizza.id)}>
+            <button className="cart-btn" onClick={() => addToCart(pizza)}>
               +
+            </button>
+            <button
+              className="cart-btn cart-btn-delete"
+              onClick={() => deleteFromCart(pizza.id)}
+              style={{ marginLeft: "10px", background: "#e74c3c", color: "#fff" }}
+            >
+              Eliminar
             </button>
           </li>
         ))}

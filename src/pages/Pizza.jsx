@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Importa useParams
+import { useParams } from "react-router-dom"; 
+import { usePizzas } from "../context/PizzasContext";
 
 const Pizza = () => {
-  const { id } = useParams(); // Obtené el id de la URL
+  const { id } = useParams(); 
   const [pizza, setPizza] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,7 +24,7 @@ const Pizza = () => {
         setError(err.message);
         setLoading(false);
       });
-  }, [id]); // Ahora depende del id
+  }, [id]); 
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error}</p>;

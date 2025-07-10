@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useCart } from "../context/CardContext.jsx"; 
+import { usePizzas } from "../context/PizzasContext";
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { addToCart } = useCart(); 
 
   useEffect(() => {
     fetch("http://localhost:5000/api/pizzas")
@@ -50,7 +53,9 @@ const Home = () => {
                     <li key={idx}>{ing}</li>
                   ))}
                 </ul>
-                <button className="btn btn-success mt-auto" disabled>
+                <button
+                  className="btn btn-success mt-auto"
+                  onClick={() => addToCart(pizza)} >
                   Añadir al carrito
                 </button>
               </div>
