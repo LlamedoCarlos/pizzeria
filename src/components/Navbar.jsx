@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import '../assets/css/navbar.css';
 import { useCart } from "../context/CardContext.jsx";
+import { useUser } from "../context/UserContext"; 
 
 export const Navbar = () => {
-  const { total } = useCart(); 
-  const token = false; 
+  const { total } = useCart();
+  const { token, logout } = useUser(); 
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
@@ -15,7 +16,12 @@ export const Navbar = () => {
           {token ? (
             <>
               <Link to="/profile" className="btn btn-outline-light">🔓 Profile</Link>
-              <button className="btn btn-outline-light">🔒 Logout</button>
+              <button
+                className="btn btn-outline-light"
+                onClick={logout} 
+              >
+                🔒 Logout
+              </button>
             </>
           ) : (
             <>
