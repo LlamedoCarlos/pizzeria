@@ -1,32 +1,31 @@
 import React, { useState } from 'react';
-import '../components/Register.css'; // Asegúrate de que la ruta sea correcta
+import '../components/Register.css';
+import { useUser } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const { register } = useUser();
+  const navigate = useNavigate();
 
-  // Expresiones regulares corregidas:
   const mayuscula = /[A-Z]/;
   const minuscula = /[a-z]/;
   const numero = /\d/;
   const especial = /[^A-Za-z0-9]/;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Validación: campos vacíos
     if (!email || !password || !confirmPassword) {
       setMensaje('Todos los campos son obligatorios');
       return;
     }
-    // Validación: mínimo 6 caracteres
     if (password.length < 6) {
       setMensaje('La contraseña debe tener al menos 6 caracteres');
       return;
     }
-    // Validaciones una por una, con mensaje específico
     if (!mayuscula.test(password)) {
       setMensaje('La contraseña debe tener al menos una mayúscula');
       return;
@@ -43,18 +42,19 @@ export const Register = () => {
       setMensaje('La contraseña debe tener al menos un carácter especial');
       return;
     }
-    // Validación: las contraseñas deben coincidir
     if (password !== confirmPassword) {
       setMensaje('Las contraseñas no coinciden');
       return;
     }
 
-    // Si todo está bien
-    setMensaje('¡Registro exitoso!');
-    // Puedes limpiar los campos si quieres:
-    // setEmail('');
-    // setPassword('');
-    // setConfirmPassword('');
+    // --- USANDO EL CONTEXTO ---
+    const result = await register(email, password);
+    if (result.ok) {
+      setMensaje('¡Registro exitoso!');
+      setTimeout(() => navigate('/profile'), 1000);
+    } else {
+      setMensaje(result.error || "Error al registrarse");
+    }
   };
 
   return (

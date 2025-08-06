@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 import '../assets/css/login.css';
+import { useUser } from '../context/UserContext'; 
+import { useNavigate } from 'react-router-dom'; 
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const [cargando, setCargando] = useState(false);
+  const { login } = useUser(); 
+  const navigate = useNavigate(); 
 
-   // Expresiones regulares corregidas:
   const mayuscula = /[A-Z]/;
   const minuscula = /[a-z]/;
   const numero = /\d/;
   const especial = /[^A-Za-z0-9]/;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validación: campos vacíos
     if (!email || !password) {
       setMensaje('Todos los campos son obligatorios');
       return;
     }
-    // Validación: mínimo 6 caracteres
     if (password.length < 6) {
       setMensaje('La contraseña debe tener al menos 6 caracteres');
       return;
     }
-    // Validaciones una por una, con mensaje específico
     if (!mayuscula.test(password)) {
       setMensaje('La contraseña debe tener al menos una mayúscula');
       return;
@@ -43,11 +43,19 @@ export const Login = () => {
       return;
     }
 
-    // Si todo está bien, muestra mensaje de éxito
-    setMensaje('¡Inicio de sesión exitoso!');
-    // Aquí podrías limpiar los campos o redirigir si quieres
-    // setEmail('');
-    // setPassword('');
+    setCargando(true);
+
+    // --- USANDO EL CONTEXTO ---
+    const result = await login(email, password);
+    if (result.ok) {
+      setMensaje('¡Inicio de sesión exitoso!');
+     
+      setTimeout(() => navigate('/profile'), 1000);
+    } else {
+      setMensaje(result.error || "Error al iniciar sesión");
+    }
+
+    setCargando(false);
   };
 
   return (
@@ -72,7 +80,9 @@ export const Login = () => {
           placeholder="Escribe tu contraseña"
           autoComplete="current-password"
         />
-        <button type="submit">Ingresar</button>
+        <button type="submit" disabled={cargando}>
+          {cargando ? "Ingresando..." : "Ingresar"}
+        </button>
         {mensaje && (
           <div className={`mensaje ${mensaje === "¡Inicio de sesión exitoso!" ? "exito" : "error"}`}>
             {mensaje}

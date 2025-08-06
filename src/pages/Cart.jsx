@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../context/CardContext.jsx";
 import { useUser } from "../context/UserContext"; 
 import "../assets/css/Cart.css";
 
 export const Cart = () => {
-  const { cart, addToCart, removeFromCart, deleteFromCart, total } = useCart();
+  const { cart, addToCart, removeFromCart, deleteFromCart, total, clearCart } = useCart();
   const { token } = useUser(); 
+  const [mensaje, setMensaje] = useState("");
+  const [cargando, setCargando] = useState(false);
+
+  const handlePagar = async () => {
+    setCargando(true);
+    setMensaje("");
+    try {
+      const response = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({ cart, total }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setMensaje(data.message || "Error al procesar el pago.");
+      } else {
+        setMensaje("¡Compra realizada con éxito!"); 
+        if (clearCart) clearCart();
+        
+        setTimeout(() => setMensaje(""), 3000);
+      }
+    } catch (err) {
+      setMensaje("Error al conectar con el servidor.");
+    }
+    setCargando(false);
+  };
 
   if (cart.length === 0) {
     return <p className="cart-title">El carrito está vacío.</p>;
@@ -38,8 +67,18 @@ export const Cart = () => {
         ))}
       </ul>
       <h3 className="cart-total">Total: ${total.toLocaleString()}</h3>
-      <button className="btn-pay" disabled={!token}>Pagar</button>
-     
+      <button
+        className="btn-pay"
+        disabled={!token || cargando}
+        onClick={handlePagar}
+      >
+        {cargando ? "Procesando..." : "Pagar"}
+      </button>
+      {mensaje && (
+        <div className={`mensaje ${mensaje.includes("éxito") ? "exito" : "error"}`}>
+          {mensaje}
+        </div>
+      )}
     </div>
   );
 };

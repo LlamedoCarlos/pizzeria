@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../assets/css/navbar.css';
 import { useCart } from "../context/CardContext.jsx";
 import { useUser } from "../context/UserContext"; 
 
 export const Navbar = () => {
   const { total } = useCart();
-  const { token, logout } = useUser(); 
+  const { token, logout } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login"); // o "/" si prefieres llevarlo al home
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
@@ -18,7 +24,7 @@ export const Navbar = () => {
               <Link to="/profile" className="btn btn-outline-light">🔓 Profile</Link>
               <button
                 className="btn btn-outline-light"
-                onClick={logout} 
+                onClick={handleLogout}
               >
                 🔒 Logout
               </button>
